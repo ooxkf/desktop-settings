@@ -79,6 +79,7 @@ try:
     headers = {"Accept-Language": f"{lng.replace("_", "-")},{lng.split("_")[0]};q=0.5"}
     weather = requests.get(f"https://manjaro-sway.download/weather/{city}?temperature_unit={temperature_unit}&wind_speed_unit={wind_speed_unit}", timeout=10, headers=headers).json()
 except (
+    json.decoder.JSONDecodeError,
     requests.exceptions.HTTPError,
     requests.exceptions.ConnectionError,
     requests.exceptions.Timeout,
